@@ -96,8 +96,8 @@ instance UserStorageBackend Persistent where
         runPersistent conn $ runMigration migrateAll
     destroyUserBackend conn =
         runPersistent conn $
-        do _ <- rawExecute "DROP TABLE IF EXISTS \"login\";" []
-           _ <- rawExecute "DROP TABLE IF EXISTS \"login_token\";" []
+        do _ <- rawExecute "DROP TABLE IF EXISTS \"login_token\";" []
+           _ <- rawExecute "DROP TABLE IF EXISTS \"login\";" []
            return ()
     housekeepBackend conn =
         do now <- getCurrentTime
